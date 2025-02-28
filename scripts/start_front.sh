@@ -1,10 +1,5 @@
 #!/bin/sh
 
-. ./scripts/load_python_env.sh
-
-export VITE_BUILD_OUTDIR="../backend/static"
-export VITE_ENV_PATH="../backend/.env"
-
 echo ""
 echo "Restoring frontend npm packages"
 echo ""
@@ -25,11 +20,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ""
-echo "Starting backend"
+echo "Starting frontend"
 echo ""
-cd ../../
-./.venv/bin/python app/backend/app.py
-if [ $? -ne 0 ]; then
-    echo "Failed to start backend"
-    exit $?
-fi
+npm run dev
